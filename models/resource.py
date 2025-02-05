@@ -3,18 +3,30 @@ from typing import Dict, Any, Optional
 
 @dataclass
 class Resource:
-    # Required fields
-    type: str
     name: str
+    type: str
+    properties: Dict[str, Any]
     
-    # Dynamic properties stored in a dictionary
-    properties: Dict[str, Any] = field(default_factory=dict)
-    azure_specific: Dict[str, Any] = field(default_factory=dict)
-
-    def get_property(self, key: str, default: Any = None) -> Any:
-        """Safely get a property value."""
+    @property
+    def azure_specific(self):
+        """Get azure_specific properties as an object with attribute access"""
+        return ResourceProperties(self.properties.get('azure_specific', {}))
+        
+    def get(self, key: str, default=None):
+        """Get property from resource properties"""
         return self.properties.get(key, default)
 
     def has_property(self, key: str) -> bool:
-        """Check if a property exists."""
+        """Check if property exists in root properties"""
         return key in self.properties
+
+@dataclass
+class ResourceProperties:
+    """Helper class to provide attribute-style access to properties"""
+    properties: Dict[str, Any]
+    
+    def __getattr__(self, name):
+        return self.properties.get(name)
+        
+    def get(self, key: str, default=None):
+        return self.properties.get(key, default)

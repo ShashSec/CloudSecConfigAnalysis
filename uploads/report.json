@@ -1,5 +1,5 @@
 {
-  "timestamp": "2025-02-05T10:38:29.946701",
+  "timestamp": "2025-02-05T11:07:41.512372",
   "total_resources_analyzed": 17,
   "successful_analyses": 17,
   "failed_analyses": 0,
@@ -48,6 +48,14 @@
         "recommendation": "Enable disk encryption for virtual machines"
       },
       {
+        "rule_id": "STG_SEC_001",
+        "resource_name": "storage2",
+        "resource_type": "storage_account",
+        "severity": "HIGH",
+        "description": "Resource storage2 violates rule Storage Account HTTPS Only SAS Check",
+        "recommendation": "Configure SAS tokens to use HTTPS only to prevent unauthorized access"
+      },
+      {
         "rule_id": "STG_SEC_005",
         "resource_name": "storage2",
         "resource_type": "storage_account",
@@ -64,28 +72,20 @@
         "recommendation": "Enable encryption with Microsoft Managed Keys (MMK) for data at rest"
       },
       {
-        "rule_id": "STG_SEC_006",
-        "resource_name": "storage2",
-        "resource_type": "storage_account",
-        "severity": "HIGH",
-        "description": "Resource storage2 violates rule Storage Account Private Endpoints Check",
-        "recommendation": "Configure private endpoints for secure access to storage account"
-      },
-      {
-        "rule_id": "STG_SEC_001",
-        "resource_name": "storage2",
-        "resource_type": "storage_account",
-        "severity": "HIGH",
-        "description": "Resource storage2 violates rule Storage Account HTTPS Only SAS Check",
-        "recommendation": "Configure SAS tokens to use HTTPS only to prevent unauthorized access"
-      },
-      {
         "rule_id": "STG_SEC_002",
         "resource_name": "storage2",
         "resource_type": "storage_account",
         "severity": "HIGH",
         "description": "Resource storage2 violates rule Storage Account SAS Token Expiry Check",
         "recommendation": "Configure SAS tokens to expire within one hour to minimize security risks"
+      },
+      {
+        "rule_id": "STG_SEC_006",
+        "resource_name": "storage2",
+        "resource_type": "storage_account",
+        "severity": "HIGH",
+        "description": "Resource storage2 violates rule Storage Account Private Endpoints Check",
+        "recommendation": "Configure private endpoints for secure access to storage account"
       },
       {
         "rule_id": "VM_SEC_002",
@@ -175,14 +175,6 @@
   "findings_by_resource": {
     "virtual_machine": [
       {
-        "rule_id": "VM_SEC_002",
-        "resource_name": "vm1",
-        "resource_type": "virtual_machine",
-        "severity": "HIGH",
-        "description": "Resource vm1 violates rule VM Disk Encryption Check",
-        "recommendation": "Enable disk encryption for virtual machines"
-      },
-      {
         "rule_id": "VM_SEC_003",
         "resource_name": "vm1",
         "resource_type": "virtual_machine",
@@ -192,10 +184,10 @@
       },
       {
         "rule_id": "VM_SEC_002",
-        "resource_name": "vm2",
+        "resource_name": "vm1",
         "resource_type": "virtual_machine",
         "severity": "HIGH",
-        "description": "Resource vm2 violates rule VM Disk Encryption Check",
+        "description": "Resource vm1 violates rule VM Disk Encryption Check",
         "recommendation": "Enable disk encryption for virtual machines"
       },
       {
@@ -208,10 +200,10 @@
       },
       {
         "rule_id": "VM_SEC_002",
-        "resource_name": "vm1",
+        "resource_name": "vm2",
         "resource_type": "virtual_machine",
         "severity": "HIGH",
-        "description": "Resource vm1 violates rule VM Disk Encryption Check",
+        "description": "Resource vm2 violates rule VM Disk Encryption Check",
         "recommendation": "Enable disk encryption for virtual machines"
       },
       {
@@ -221,6 +213,14 @@
         "severity": "MEDIUM",
         "description": "Resource vm1 violates rule VM Open Ports Check",
         "recommendation": "Review and restrict open ports. Avoid using well-known ports unless necessary"
+      },
+      {
+        "rule_id": "VM_SEC_002",
+        "resource_name": "vm1",
+        "resource_type": "virtual_machine",
+        "severity": "HIGH",
+        "description": "Resource vm1 violates rule VM Disk Encryption Check",
+        "recommendation": "Enable disk encryption for virtual machines"
       },
       {
         "rule_id": "VM_SEC_003",
@@ -291,6 +291,22 @@
     ],
     "storage_account": [
       {
+        "rule_id": "STG_SEC_001",
+        "resource_name": "storage2",
+        "resource_type": "storage_account",
+        "severity": "HIGH",
+        "description": "Resource storage2 violates rule Storage Account HTTPS Only SAS Check",
+        "recommendation": "Configure SAS tokens to use HTTPS only to prevent unauthorized access"
+      },
+      {
+        "rule_id": "STG_SEC_003",
+        "resource_name": "storage2",
+        "resource_type": "storage_account",
+        "severity": "MEDIUM",
+        "description": "Resource storage2 violates rule Storage Account Stored Access Policy Check",
+        "recommendation": "Use stored access policies (SAP) for SAS tokens to enable centralized management"
+      },
+      {
         "rule_id": "STG_SEC_005",
         "resource_name": "storage2",
         "resource_type": "storage_account",
@@ -307,12 +323,12 @@
         "recommendation": "Enable encryption with Microsoft Managed Keys (MMK) for data at rest"
       },
       {
-        "rule_id": "STG_SEC_003",
+        "rule_id": "STG_SEC_002",
         "resource_name": "storage2",
         "resource_type": "storage_account",
-        "severity": "MEDIUM",
-        "description": "Resource storage2 violates rule Storage Account Stored Access Policy Check",
-        "recommendation": "Use stored access policies (SAP) for SAS tokens to enable centralized management"
+        "severity": "HIGH",
+        "description": "Resource storage2 violates rule Storage Account SAS Token Expiry Check",
+        "recommendation": "Configure SAS tokens to expire within one hour to minimize security risks"
       },
       {
         "rule_id": "STG_SEC_006",
@@ -321,34 +337,10 @@
         "severity": "HIGH",
         "description": "Resource storage2 violates rule Storage Account Private Endpoints Check",
         "recommendation": "Configure private endpoints for secure access to storage account"
-      },
-      {
-        "rule_id": "STG_SEC_001",
-        "resource_name": "storage2",
-        "resource_type": "storage_account",
-        "severity": "HIGH",
-        "description": "Resource storage2 violates rule Storage Account HTTPS Only SAS Check",
-        "recommendation": "Configure SAS tokens to use HTTPS only to prevent unauthorized access"
-      },
-      {
-        "rule_id": "STG_SEC_002",
-        "resource_name": "storage2",
-        "resource_type": "storage_account",
-        "severity": "HIGH",
-        "description": "Resource storage2 violates rule Storage Account SAS Token Expiry Check",
-        "recommendation": "Configure SAS tokens to expire within one hour to minimize security risks"
       }
     ]
   },
   "detailed_findings": [
-    {
-      "rule_id": "VM_SEC_002",
-      "resource_name": "vm1",
-      "resource_type": "virtual_machine",
-      "severity": "HIGH",
-      "description": "Resource vm1 violates rule VM Disk Encryption Check",
-      "recommendation": "Enable disk encryption for virtual machines"
-    },
     {
       "rule_id": "VM_SEC_003",
       "resource_name": "vm1",
@@ -356,6 +348,14 @@
       "severity": "MEDIUM",
       "description": "Resource vm1 violates rule VM Open Ports Check",
       "recommendation": "Review and restrict open ports. Avoid using well-known ports unless necessary"
+    },
+    {
+      "rule_id": "VM_SEC_002",
+      "resource_name": "vm1",
+      "resource_type": "virtual_machine",
+      "severity": "HIGH",
+      "description": "Resource vm1 violates rule VM Disk Encryption Check",
+      "recommendation": "Enable disk encryption for virtual machines"
     },
     {
       "rule_id": "SQL_DB_001",
@@ -374,6 +374,14 @@
       "recommendation": "Restrict public network access to SQL Server and configure specific IP ranges or VNet rules"
     },
     {
+      "rule_id": "VM_SEC_003",
+      "resource_name": "vm2",
+      "resource_type": "virtual_machine",
+      "severity": "MEDIUM",
+      "description": "Resource vm2 violates rule VM Open Ports Check",
+      "recommendation": "Review and restrict open ports. Avoid using well-known ports unless necessary"
+    },
+    {
       "rule_id": "VM_SEC_002",
       "resource_name": "vm2",
       "resource_type": "virtual_machine",
@@ -383,10 +391,10 @@
     },
     {
       "rule_id": "VM_SEC_003",
-      "resource_name": "vm2",
+      "resource_name": "vm1",
       "resource_type": "virtual_machine",
       "severity": "MEDIUM",
-      "description": "Resource vm2 violates rule VM Open Ports Check",
+      "description": "Resource vm1 violates rule VM Open Ports Check",
       "recommendation": "Review and restrict open ports. Avoid using well-known ports unless necessary"
     },
     {
@@ -399,19 +407,27 @@
     },
     {
       "rule_id": "VM_SEC_003",
-      "resource_name": "vm1",
-      "resource_type": "virtual_machine",
-      "severity": "MEDIUM",
-      "description": "Resource vm1 violates rule VM Open Ports Check",
-      "recommendation": "Review and restrict open ports. Avoid using well-known ports unless necessary"
-    },
-    {
-      "rule_id": "VM_SEC_003",
       "resource_name": "vm2",
       "resource_type": "virtual_machine",
       "severity": "MEDIUM",
       "description": "Resource vm2 violates rule VM Open Ports Check",
       "recommendation": "Review and restrict open ports. Avoid using well-known ports unless necessary"
+    },
+    {
+      "rule_id": "STG_SEC_001",
+      "resource_name": "storage2",
+      "resource_type": "storage_account",
+      "severity": "HIGH",
+      "description": "Resource storage2 violates rule Storage Account HTTPS Only SAS Check",
+      "recommendation": "Configure SAS tokens to use HTTPS only to prevent unauthorized access"
+    },
+    {
+      "rule_id": "STG_SEC_003",
+      "resource_name": "storage2",
+      "resource_type": "storage_account",
+      "severity": "MEDIUM",
+      "description": "Resource storage2 violates rule Storage Account Stored Access Policy Check",
+      "recommendation": "Use stored access policies (SAP) for SAS tokens to enable centralized management"
     },
     {
       "rule_id": "STG_SEC_005",
@@ -430,12 +446,12 @@
       "recommendation": "Enable encryption with Microsoft Managed Keys (MMK) for data at rest"
     },
     {
-      "rule_id": "STG_SEC_003",
+      "rule_id": "STG_SEC_002",
       "resource_name": "storage2",
       "resource_type": "storage_account",
-      "severity": "MEDIUM",
-      "description": "Resource storage2 violates rule Storage Account Stored Access Policy Check",
-      "recommendation": "Use stored access policies (SAP) for SAS tokens to enable centralized management"
+      "severity": "HIGH",
+      "description": "Resource storage2 violates rule Storage Account SAS Token Expiry Check",
+      "recommendation": "Configure SAS tokens to expire within one hour to minimize security risks"
     },
     {
       "rule_id": "STG_SEC_006",
@@ -444,22 +460,6 @@
       "severity": "HIGH",
       "description": "Resource storage2 violates rule Storage Account Private Endpoints Check",
       "recommendation": "Configure private endpoints for secure access to storage account"
-    },
-    {
-      "rule_id": "STG_SEC_001",
-      "resource_name": "storage2",
-      "resource_type": "storage_account",
-      "severity": "HIGH",
-      "description": "Resource storage2 violates rule Storage Account HTTPS Only SAS Check",
-      "recommendation": "Configure SAS tokens to use HTTPS only to prevent unauthorized access"
-    },
-    {
-      "rule_id": "STG_SEC_002",
-      "resource_name": "storage2",
-      "resource_type": "storage_account",
-      "severity": "HIGH",
-      "description": "Resource storage2 violates rule Storage Account SAS Token Expiry Check",
-      "recommendation": "Configure SAS tokens to expire within one hour to minimize security risks"
     },
     {
       "rule_id": "VM_SEC_002",

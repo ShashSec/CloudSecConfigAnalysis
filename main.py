@@ -25,33 +25,30 @@ class SecurityAnalyzer:
         self.engine = SecurityAnalysisEngine(self.registry)
 
     def load_resources(self) -> List[Resource]:
-        """Load resources from JSON file and convert to Resource objects."""
+        """Load resources from JSON file and convert to Resource objects"""
         try:
             with open(self.resources_file, 'r') as f:
                 data = json.load(f)
-            
+                resources_list = data.get('resources', [])
+                
+            # Convert each dictionary to Resource object
             resources = []
-            for item in data['resources']:
-                # Extract required fields
-                resource_type = item.pop('type')
-                resource_name = item.pop('name')
-                
-                # Extract azure_specific if it exists
-                azure_specific = item.pop('azure_specific', {})
-                
-                # All remaining fields go into properties
-                properties = item
-                
-                resource = Resource(
-                    type=resource_type,
-                    name=resource_name,
-                    properties=properties,
-                    azure_specific=azure_specific
-                )
-                resources.append(resource)
+            for item in resources_list:
+                if self._validate_resource_json(item):
+                    resource = Resource(
+                        name=item.get('name'),
+                        type=item.get('type'),
+                        properties=item
+                    )
+                    resources.append(resource)
+                else:
+                    logging.warning(f"Skipping invalid resource: {item.get('name', 'unknown')}")
             
+            logging.info(f"Loaded {len(resources)} resources")
             return resources
-        
+        except Exception as e:
+            logging.error(f"Error loading resources: {str(e)}")
+            raise        
         except FileNotFoundError:
             logger.error(f"Resources file not found: {self.resources_file}")
             raise

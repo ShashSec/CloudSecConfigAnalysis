@@ -3,10 +3,13 @@ import inspect
 from typing import List
 from models.security_rule import SecurityRule
 from .rule_registry import SecurityRuleRegistry
+import os
+from pathlib import Path
 
 class RuleLoader:
-    def __init__(self, registry: SecurityRuleRegistry):
+    def __init__(self, registry):
         self.registry = registry
+        self.rules_dir = Path(__file__).parent.parent / 'rules'
 
     def load_rules_from_module(self, module_path: str) -> None:
         """Load all rules from a given module path."""
@@ -24,13 +27,16 @@ class RuleLoader:
 
     def load_all_rules(self) -> None:
         """Load all rules from all resource type modules."""
-        rule_modules = [
-            "rules.virtual_machine.password_strength",
-            "rules.virtual_machine.encryption",
-            "rules.virtual_machine.open_ports",
-            "rules.storage_account.encryption",
-            "rules.storage_account.replication"
-        ]
+        # Get all directory names under rules/ as resource types
+        resource_types = [d.name for d in self.rules_dir.iterdir() 
+                         if d.is_dir() and not d.name.startswith('__')]
         
-        for module_path in rule_modules:
-            self.load_rules_from_module(module_path)
+        for resource_type in resource_types:
+            # Get all .py files in the resource type directory
+            rule_dir = self.rules_dir / resource_type
+            rule_files = [f.stem for f in rule_dir.glob('*.py') 
+                         if f.is_file() and not f.name.startswith('__')]
+            
+            for rule_file in rule_files:
+                module_path = f"rules.{resource_type}.{rule_file}"
+                self.load_rules_from_module(module_path)

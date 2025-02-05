@@ -1,0 +1,56 @@
+{
+  "resources": [
+    {
+      "type": "virtual_machine",
+      "name": "example-vm",
+      "open_ports": [22, 80, 443],
+      "password": "your-password",
+      "encryption": false,
+      "mfa_enabled": false,
+      "azure_specific": {
+        "resource_group": "example-rg",
+        "location": "eastus",
+        "vm_size": "Standard_DS1_v2",
+        "disk_encryption": {
+          "type": "PMK",
+          "enabled": false
+        }
+      }
+    },
+    {
+      "type": "database",
+      "name": "example-db",
+      "encryption": true,
+      "azure_specific": {
+        "resource_group": "example-rg",
+        "location": "westus",
+        "db_service": "Azure SQL Database",
+        "auditing_enabled": false
+      }
+    },
+    {
+      "type": "storage_account",
+      "name": "example-storage",
+      "https_only": true,
+      "sas_expiry_hours": 1,
+      "stored_access_policy_enabled": true,
+      "public_network_access": false,
+      "default_network_access": "Deny",
+      "private_endpoints_enabled": true,
+      "encryption_type": "Microsoft.Storage",
+      "encryption": true,
+      "azure_specific": {
+        "resource_group": "example-rg",
+        "location": "centralus",
+        "account_tier": "Premium",
+        "replication": "GRS",
+        "sasPolicy": {
+          "sasProtocol": "Https"
+        },
+        "networkAcls": {
+          "defaultAction": "Deny"
+        }
+      }
+    }
+  ]
+}

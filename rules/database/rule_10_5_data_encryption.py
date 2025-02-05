@@ -1,4 +1,6 @@
-from cloudsecconfiganalysis.rules import SecurityRule, Severity
+from models.security_rule import SecurityRule
+from models.resource import Resource
+from models.security_rule import Severity
 from typing import Dict, Any
 
 

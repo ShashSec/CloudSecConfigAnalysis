@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cloud Security Configuration Analyzer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Cloud Security Configuration Analyzer</h1>
+        
+        <div class="upload-section">
+             <!-- Add template download button -->
+             <div class="template-section">
+                <h3>Get Started</h3>
+                <p>Download the template file to see the required JSON structure:</p>
+                <a href="{{ url_for('static', filename='template.json') }}" 
+                   class="download-btn" 
+                   download="resources_template.json">
+                    Download Template
+                </a>
+            </div>
+            <form id="uploadForm">
+                <label for="configFile">Upload JSON Configuration File:</label>
+                <input type="file" id="configFile" accept=".json" required>
+                <button type="submit">Analyze Configuration</button>
+            </form>
+        </div>
+
+        <div id="loading" style="display: none;">
+            Analyzing configuration...
+        </div>
+
+        <div id="report" style="display: none;">
+            <h2>Security Analysis Report</h2>
+            <div class="summary-section">
+                <h3>Summary</h3>
+                <div id="summary"></div>
+            </div>
+            
+            <div class="findings-section">
+                <h3>Detailed Findings</h3>
+                <div id="findings"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
