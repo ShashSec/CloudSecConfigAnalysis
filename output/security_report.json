@@ -1,0 +1,92 @@
+{
+  "timestamp": "2025-02-05T02:05:28.563833",
+  "total_resources_analyzed": 14,
+  "successful_analyses": 14,
+  "failed_analyses": 0,
+  "failed_resources": [],
+  "total_findings": 3,
+  "findings_by_severity": {
+    "HIGH": [],
+    "MEDIUM": [
+      {
+        "rule_id": "STG_SEC_002",
+        "resource_name": "storage1",
+        "resource_type": "storage_account",
+        "severity": "MEDIUM",
+        "description": "Resource storage1 violates rule Storage Account Replication Check",
+        "recommendation": "Use GRS or RA-GRS for critical storage accounts"
+      },
+      {
+        "rule_id": "STG_SEC_002",
+        "resource_name": "storage1",
+        "resource_type": "storage_account",
+        "severity": "MEDIUM",
+        "description": "Resource storage1 violates rule Storage Account Replication Check",
+        "recommendation": "Use GRS or RA-GRS for critical storage accounts"
+      },
+      {
+        "rule_id": "STG_SEC_002",
+        "resource_name": "storage3",
+        "resource_type": "storage_account",
+        "severity": "MEDIUM",
+        "description": "Resource storage3 violates rule Storage Account Replication Check",
+        "recommendation": "Use GRS or RA-GRS for critical storage accounts"
+      }
+    ],
+    "LOW": []
+  },
+  "findings_by_resource": {
+    "storage_account": [
+      {
+        "rule_id": "STG_SEC_002",
+        "resource_name": "storage1",
+        "resource_type": "storage_account",
+        "severity": "MEDIUM",
+        "description": "Resource storage1 violates rule Storage Account Replication Check",
+        "recommendation": "Use GRS or RA-GRS for critical storage accounts"
+      },
+      {
+        "rule_id": "STG_SEC_002",
+        "resource_name": "storage1",
+        "resource_type": "storage_account",
+        "severity": "MEDIUM",
+        "description": "Resource storage1 violates rule Storage Account Replication Check",
+        "recommendation": "Use GRS or RA-GRS for critical storage accounts"
+      },
+      {
+        "rule_id": "STG_SEC_002",
+        "resource_name": "storage3",
+        "resource_type": "storage_account",
+        "severity": "MEDIUM",
+        "description": "Resource storage3 violates rule Storage Account Replication Check",
+        "recommendation": "Use GRS or RA-GRS for critical storage accounts"
+      }
+    ]
+  },
+  "detailed_findings": [
+    {
+      "rule_id": "STG_SEC_002",
+      "resource_name": "storage1",
+      "resource_type": "storage_account",
+      "severity": "MEDIUM",
+      "description": "Resource storage1 violates rule Storage Account Replication Check",
+      "recommendation": "Use GRS or RA-GRS for critical storage accounts"
+    },
+    {
+      "rule_id": "STG_SEC_002",
+      "resource_name": "storage1",
+      "resource_type": "storage_account",
+      "severity": "MEDIUM",
+      "description": "Resource storage1 violates rule Storage Account Replication Check",
+      "recommendation": "Use GRS or RA-GRS for critical storage accounts"
+    },
+    {
+      "rule_id": "STG_SEC_002",
+      "resource_name": "storage3",
+      "resource_type": "storage_account",
+      "severity": "MEDIUM",
+      "description": "Resource storage3 violates rule Storage Account Replication Check",
+      "recommendation": "Use GRS or RA-GRS for critical storage accounts"
+    }
+  ]
+}
