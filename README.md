@@ -144,6 +144,10 @@ Accepts only json file
 
 3. **Security**
 - Input validation of json and dropping any suspecious parameter syntax
+- File size validation before processing
+- Concurrent upload handling
+- Cleanup of temporary files on error
+- API key stored in keyvault while running the application/use
 
 4. **Performance Optimization**
 - Parallel Processing:
