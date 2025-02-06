@@ -105,12 +105,8 @@ def analyze():
         # Initialize analyzer
         analyzer = SecurityAnalyzer(filepath, openai_api_key)
         
-        # Run analysis in event loop
-        report = loop.run_until_complete(analyzer.analyze_resources())
-
-        # Clean up
-        if os.path.exists(filepath):
-            os.remove(filepath)
+        # Run analysis synchronously first
+        report = asyncio.run(analyzer.analyze_resources())
 
         return jsonify({
             'status': 'success',

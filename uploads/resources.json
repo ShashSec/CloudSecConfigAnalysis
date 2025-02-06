@@ -1,0 +1,328 @@
+{"resources": [
+    {
+      "type": "virtual_machine",
+      "name": "vm1",
+      "open_ports": [22, 80, 443],
+      "password": "weakpassword",
+      "encryption": false,
+      "mfa_enabled": false,
+      "azure_specific": {
+        "resource_group": "rg1",
+        "location": "eastus",
+        "vm_size": "Standard_DS1_v2"
+      }
+    },
+    {
+      "type": "storage_account",
+      "name": "storage1",
+      "encryption": false,
+      "azure_specific": {
+        "resource_group": "rg1",
+        "location": "eastus",
+        "account_tier": "Standard",
+        "replication": "LRS"
+      }
+    },
+    {
+      "type": "database",
+      "name": "db1",
+      "open_ports": [],
+      "password": "supersecurepassword",
+      "encryption": true,
+      "mfa_enabled": true,
+      "azure_specific": {
+        "resource_group": "rg2",
+        "location": "westus",
+        "db_service": "Azure SQL Database"
+      }
+    },
+    {
+      "type": "virtual_machine",
+      "name": "vm2",
+      "open_ports": [22, 8080],
+      "password": "anotherweakpassword",
+      "encryption": false,
+      "mfa_enabled": false,
+      "azure_specific": {
+        "resource_group": "rg2",
+        "location": "westus",
+        "vm_size": "Standard_B2s"
+      }
+    },
+    {
+      "type": "storage_account",
+      "name": "storage2",
+      "encryption": true,
+      "azure_specific": {
+        "resource_group": "rg3",
+        "location": "centralus",
+        "account_tier": "Premium",
+        "replication": "GRS"
+      }
+    }, {
+      "type": "virtual_machine",
+      "name": "vm1",
+      "open_ports": [22, 80, 443],
+      "password": "weakpassword",
+      "encryption": false,
+      "mfa_enabled": false,
+      "azure_specific": {
+        "resource_group": "rg1",
+        "location": "eastus",
+        "vm_size": "Standard_DS1_v2",
+        "bastion_host": null,
+        "storage_profile": {
+          "osDisk": {
+            "managedDisk": null,
+            "vhd": {
+              "uri": "https://storage1.blob.core.windows.net/vhds/vm1.vhd"
+            }
+          }
+        },
+        "disk_encryption": {
+          "type": "PMK",
+          "enabled": false
+        },
+        "data_access_auth_mode": "Disabled",
+        "extensions": [
+          {
+            "name": "CustomScript",
+            "approved": false
+          }
+        ],
+        "security_profile": {
+          "endpoint_protection_enabled": false,
+          "secure_boot_enabled": false,
+          "vtpm_enabled": false
+        },
+        "vhd_encryption": {
+          "enabled": false
+        },
+        "identity": {
+          "mfa_enabled": false
+        }
+      }
+    },
+    {
+      "type": "virtual_machine",
+      "name": "vm2",
+      "open_ports": [22, 8080],
+      "password": "anotherweakpassword",
+      "encryption": true,
+      "mfa_enabled": true,
+      "azure_specific": {
+        "resource_group": "rg2",
+        "location": "westus",
+        "vm_size": "Standard_B2s",
+        "bastion_host": {
+          "name": "bastion1",
+          "status": "Running"
+        },
+        "storage_profile": {
+          "osDisk": {
+            "managedDisk": {
+              "id": "/subscriptions/.../managedDisk1"
+            }
+          }
+        },
+        "disk_encryption": {
+          "type": "CMK",
+          "enabled": true
+        },
+        "data_access_auth_mode": "Enabled",
+        "extensions": [
+          {
+            "name": "MicrosoftMonitoringAgent",
+            "approved": true
+          },
+          {
+            "name": "AzureDiskEncryption",
+            "approved": true
+          }
+        ],
+        "security_profile": {
+          "endpoint_protection_enabled": true,
+          "secure_boot_enabled": true,
+          "vtpm_enabled": true
+        },
+        "vhd_encryption": {
+          "enabled": true
+        },
+        "identity": {
+          "mfa_enabled": true
+        }
+      }
+    },
+    {
+      "type": "disk",
+      "name": "disk1",
+      "encryption": false,
+      "azure_specific": {
+        "resource_group": "rg1",
+        "location": "eastus",
+        "disk_state": "Unattached",
+        "encryption_settings": {
+          "enabled": false
+        },
+        "network_access_policy": "AllowAll"
+      }
+    },
+    {
+      "type": "disk",
+      "name": "disk2",
+      "encryption": true,
+      "azure_specific": {
+        "resource_group": "rg2",
+        "location": "westus",
+        "disk_state": "Unattached",
+        "encryption_settings": {
+          "enabled": true
+        },
+        "network_access_policy": "DenyAll"
+      }
+    },
+    {
+      "type": "disk",
+      "name": "disk3",
+      "encryption": false,
+      "azure_specific": {
+        "resource_group": "rg3",
+        "location": "centralus",
+        "disk_state": "Attached",
+        "encryption_settings": {
+          "enabled": false
+        },
+        "network_access_policy": "AllowAll"
+      }
+    },
+    {
+      "type": "disk",
+      "name": "disk4",
+      "encryption": true,
+      "azure_specific": {
+        "resource_group": "rg3",
+        "location": "centralus",
+        "disk_state": "Attached",
+        "encryption_settings": {
+          "enabled": true
+        },
+        "network_access_policy": "DenyAll"
+      }
+    },
+    {
+      "type": "storage_account",
+      "name": "storage1",
+      "https_only": false,
+      "sas_expiry_hours": 24,
+      "stored_access_policy_enabled": false,
+      "public_network_access": true,
+      "default_network_access": "Allow",
+      "private_endpoints_enabled": false,
+      "encryption_type": "None",
+      "encryption": false,
+      "azure_specific": {
+        "resource_group": "rg1",
+        "location": "eastus",
+        "account_tier": "Standard",
+        "replication": "LRS",
+        "sasPolicy": {
+          "sasProtocol": "HttpsOrHttp"
+        },
+        "networkAcls": {
+          "defaultAction": "Allow"
+        },
+        "privateEndpointConnections": [],
+        "encryption": {
+          "keySource": "None"
+        }
+      }
+    },
+    {
+      "type": "storage_account",
+      "name": "storage2",
+      "https_only": true,
+      "sas_expiry_hours": 1,
+      "stored_access_policy_enabled": true,
+      "public_network_access": false,
+      "default_network_access": "Deny",
+      "private_endpoints_enabled": true,
+      "encryption_type": "Microsoft.Storage",
+      "encryption": true,
+      "azure_specific": {
+        "resource_group": "rg3",
+        "location": "centralus",
+        "account_tier": "Premium",
+        "replication": "GRS",
+        "sasPolicy": {
+          "sasProtocol": "Https"
+        },
+        "networkAcls": {
+          "defaultAction": "Deny"
+        },
+        "privateEndpointConnections": [
+          {
+            "id": "endpoint1",
+            "state": "Approved"
+          }
+        ],
+        "encryption": {
+          "keySource": "Microsoft.Storage"
+        }
+      }
+    },
+    {
+      "type": "storage_account",
+      "name": "storage3",
+      "https_only": false,
+      "sas_expiry_hours": 48,
+      "stored_access_policy_enabled": false,
+      "public_network_access": true,
+      "default_network_access": "Allow",
+      "private_endpoints_enabled": false,
+      "encryption_type": "CustomerManaged",
+      "encryption": true,
+      "azure_specific": {
+        "resource_group": "rg4",
+        "location": "westus",
+        "account_tier": "Standard",
+        "replication": "LRS",
+        "sasPolicy": {
+          "sasProtocol": "HttpsOrHttp"
+        },
+        "networkAcls": {
+          "defaultAction": "Allow"
+        },
+        "privateEndpointConnections": [],
+        "encryption": {
+          "keySource": "CustomerManaged"
+        }
+      }
+    },
+    {
+      "name": "vm1",
+      "type": "virtual_machine",      
+      "os_type": "Windows",
+      "disk_encryption": false, 
+      "network_security_group": "default"
+      
+    },
+    {
+      "name": "db1",
+      "type": "database",      
+      "encryption_enabled": false, 
+      "backup_retention_days": 5 
+      
+    },
+    {
+      "type": "database",
+      "name": "db1",
+      "encryption": true,
+      "azure_specific": {
+        "resource_group": "rg2",
+        "location": "westus",
+        "db_service": "Azure SQL Database",
+        "auditing_enabled": false
+      }
+    }
+  ]
+}

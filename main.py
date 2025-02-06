@@ -171,43 +171,50 @@ class SecurityAnalyzer:
                          if d.is_dir() and not d.name.startswith('__')}
             logger.info(f"Available rule types: {rule_types}")
 
-            all_findings = []
-            ai_findings = []
-            failed_resources = []
-
-            # Process resources with rules first
+            # Split resources into rule-based and AI-based
+            rule_based_resources = []
+            ai_based_resources = []
             for resource in resources:
                 if resource.type in rule_types:
+                    rule_based_resources.append(resource)
+                else:
+                    ai_based_resources.append(resource)
+
+            # Process rule-based findings first
+            all_findings = []
+            failed_resources = []
+            
+            # Process rule-based findings
+            for resource in rule_based_resources:
+                try:
+                    logger.info(f"Analyzing resource with rules: {resource.name} ({resource.type})")
+                    findings = await self.engine.analyze_resource(resource)
+                    all_findings.extend(findings)
+                except Exception as e:
+                    logger.error(f"Rule analysis failed for {resource.name}: {e}")
+                    failed_resources.append({
+                        'name': resource.name,
+                        'type': resource.type,
+                        'error': str(e)
+                    })
+
+            # Process AI-based findings if OpenAI key is provided
+            ai_findings = []
+            if self.openai_api_key and ai_based_resources:
+                for resource in ai_based_resources:
                     try:
-                        logger.info(f"Analyzing resource with rules: {resource.name} ({resource.type})")
-                        findings = await self.engine.analyze_resource(resource)
-                        all_findings.extend(findings)
+                        logger.info(f"Processing with OpenAI: {resource.name} ({resource.type})")
+                        findings = await self.get_openai_analysis(
+                            resource.properties,
+                            resource.type,
+                            self._get_cis_doc(resource.type)
+                        )
+                        if findings:
+                            ai_findings.extend(findings)
                     except Exception as e:
-                        logger.error(f"Rule analysis failed for {resource.name}: {e}")
-                        failed_resources.append({
-                            'name': resource.name,
-                            'type': resource.type,
-                            'error': str(e)
-                        })
+                        logger.error(f"OpenAI analysis failed for {resource.name}: {e}")
 
-            # Process resources without rules using OpenAI
-            if self.openai_api_key:
-                for resource in resources:
-                    if resource.type not in rule_types:
-                        try:
-                            logger.info(f"Processing with OpenAI: {resource.name} ({resource.type})")
-                            findings = await self.get_openai_analysis(
-                                resource.properties,
-                                resource.type,
-                                self._get_cis_doc(resource.type)
-                            )
-                            if findings:
-                                ai_findings.extend(findings)
-                        except Exception as e:
-                            logger.error(f"OpenAI analysis failed for {resource.name}: {e}")
-                            # Don't add to failed_resources as this is supplementary analysis
-
-            # Generate report
+            # Create complete report
             report = {
                 'timestamp': datetime.now().isoformat(),
                 'total_resources_analyzed': len(resources),
@@ -220,16 +227,34 @@ class SecurityAnalyzer:
                 },
                 'ai_based_findings': {
                     'total': len(ai_findings),
-                    'findings': ai_findings
+                    'findings': ai_findings,
+                    'status': 'completed'
                 }
             }
-            
+
             return report
 
         except Exception as e:
             logger.error(f"Error during analysis: {e}")
             raise
-        
+
+    async def _process_ai_resources(self, resources: List[Resource]) -> List[Dict]:
+        """Process resources using OpenAI analysis."""
+        ai_findings = []
+        for resource in resources:
+            try:
+                logger.info(f"Processing with OpenAI: {resource.name} ({resource.type})")
+                findings = await self.get_openai_analysis(
+                    resource.properties,
+                    resource.type,
+                    self._get_cis_doc(resource.type)
+                )
+                if findings:
+                    ai_findings.extend(findings)
+            except Exception as e:
+                logger.error(f"OpenAI analysis failed for {resource.name}: {e}")
+        return ai_findings
+
     def _group_findings_by_severity(self, findings):
         """Group findings by severity level."""
         severity_groups = {'HIGH': [], 'MEDIUM': [], 'LOW': []}
@@ -267,18 +292,28 @@ async def main():
         analyzer = SecurityAnalyzer('data/resources.json')
         
         # Run the analysis
-        report = await analyzer.analyze_resources()
+        initial_report, ai_task = await analyzer.analyze_resources()
         
-        # Save the report
-        analyzer.save_report(report, 'output/security_report.json')
+        # Save the initial report
+        analyzer.save_report(initial_report, 'output/security_report.json')
         
         # Print summary
         print("\nAnalysis Summary:")
-        print(f"Total resources analyzed: {report['total_resources_analyzed']}")
-        print(f"Total findings: {report['total_findings']}")
+        print(f"Total resources analyzed: {initial_report['total_resources_analyzed']}")
+        print(f"Total findings: {initial_report['rule_based_findings']['total']}")
         print("\nFindings by Severity:")
-        for severity, findings in report['findings_by_severity'].items():
+        for severity, findings in initial_report['rule_based_findings']['findings'].items():
             print(f"{severity}: {len(findings)} findings")
+        
+        # Wait for AI-based findings if task exists
+        if ai_task:
+            ai_findings = await ai_task
+            initial_report['ai_based_findings']['total'] = len(ai_findings)
+            initial_report['ai_based_findings']['findings'] = ai_findings
+            initial_report['ai_based_findings']['status'] = 'completed'
+            
+            # Save the final report with AI-based findings
+            analyzer.save_report(initial_report, 'output/security_report_final.json')
             
     except Exception as e:
         logger.error(f"Analysis failed: {e}")

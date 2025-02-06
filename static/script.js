@@ -14,6 +14,7 @@ document.getElementById('uploadForm').addEventListener('submit', async (e) => {
 
     document.getElementById('loading').style.display = 'block';
     document.getElementById('report').style.display = 'none';
+    clearResults();
     
     try {
         const response = await fetch('/analyze', {
@@ -30,12 +31,13 @@ document.getElementById('uploadForm').addEventListener('submit', async (e) => {
             throw new Error(data.error);
         }
 
-        // Display findings
+        // Display rule-based findings immediately
         if (data.report.rule_based_findings) {
             displayRuleFindings(data.report.rule_based_findings);
         }
-        
-        if (data.report.ai_based_findings) {
+
+        // Display AI-based findings if available
+        if (data.report.ai_based_findings && data.report.ai_based_findings.total > 0) {
             displayAIFindings(data.report.ai_based_findings);
         }
 
