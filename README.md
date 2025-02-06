@@ -41,6 +41,48 @@ CloudSecConfigAnalysis/
 ├── data/                 # Sample data
 └── uploads/             # Temporary upload directory
 ```
+
+## Technical Design
+
+### Web Application (Flask)
+- **Component**: Frontend and HTTP server
+- **Key Files**: 
+  - `app.py`: Flask application entry point
+  - `templates/index.html`: Web interface template
+  - `static/script.js`: Client-side logic
+  - `static/style.css`: UI styling
+
+**Features**:
+- File upload handling with size/type validation
+- Async request processing
+- Error handling and user feedback
+
+### Analysis Engine (Python)
+- **Component**: Core analysis orchestrator
+- **Key Files**:
+  - `main.py`: SecurityAnalyzer class
+  - `models/`: Data models and type definitions
+
+**Responsibilities**:
+- Resource configuration parsing
+- Rule loading and registration
+- Analysis orchestration
+- Result aggregation
+- OpenAI integration for unknown resource types
+
+### Rule Engine
+- **Component**: Security rule evaluation system
+- **Key Files**:
+  - `engine/analysis_engine.py`: Rule execution engine
+  - `models/security_rule.py`: Rule base classes
+
+**Architecture**:
+```python
+class SecurityRule:
+    def analyze(self, resource: Resource) -> List[Finding]:
+        # Rule implementation
+```
+
 ## Assumptions and Design Decisions
 
 ### Security Rules
@@ -130,26 +172,30 @@ Accepts only json file
 
 ## Future Enhancements
 
-1. **Additional Rules**
+1. **update the Architecture to use OPA**
+
+-  Update architecture that incorporates Open Policy Agent (OPA) for verifying cloud configurations and develop rules using rego
+
+2. **Additional Rules**
 
 - Add rules for new resource types based on CIS benchmark and other Standards or create custom requirment:
     ```python
     def rulename_rule() -> SecurityRule:
     ```
-2. **AI Capabilities**
+3. **AI Capabilities**
 - Implement RAG (Retrieval Augmented Generation):
     - Index security standards and best practices
     - Retrieve relevant context for each analysis
 - Improve accuracy of AI recommendations using LLM as Judge by collecting metrics for each configuration, mesuring and providing feedback
 
-3. **Security**
+4. **Security**
 - Input validation of json and dropping any suspecious parameter syntax
 - File size validation before processing
 - Concurrent upload handling
 - Cleanup of temporary files on error
 - API key stored in keyvault while running the application/use
 
-4. **Performance Optimization**
+5. **Performance Optimization**
 - Parallel Processing:
     - Process rule-based analysis in parallel
     - Stream results as they become available
