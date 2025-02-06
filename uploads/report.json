@@ -1,505 +1,185 @@
 {
-  "timestamp": "2025-02-05T11:07:41.512372",
+  "timestamp": "2025-02-05T14:16:34.482645",
   "total_resources_analyzed": 17,
   "successful_analyses": 17,
   "failed_analyses": 0,
   "failed_resources": [],
-  "total_findings": 20,
-  "findings_by_severity": {
-    "HIGH": [
-      {
-        "rule_id": "VM_SEC_002",
-        "resource_name": "vm1",
-        "resource_type": "virtual_machine",
-        "severity": "HIGH",
-        "description": "Resource vm1 violates rule VM Disk Encryption Check",
-        "recommendation": "Enable disk encryption for virtual machines"
-      },
-      {
-        "rule_id": "SQL_DB_001",
-        "resource_name": "db1",
-        "resource_type": "database",
-        "severity": "HIGH",
-        "description": "Resource db1 violates rule SQL Server Auditing Enabled",
-        "recommendation": "Enable auditing on SQL Server to track database events and maintain audit logs"
-      },
-      {
-        "rule_id": "SQL_DB_002",
-        "resource_name": "db1",
-        "resource_type": "database",
-        "severity": "HIGH",
-        "description": "Resource db1 violates rule SQL Server Public Network Access Check",
-        "recommendation": "Restrict public network access to SQL Server and configure specific IP ranges or VNet rules"
-      },
-      {
-        "rule_id": "VM_SEC_002",
-        "resource_name": "vm2",
-        "resource_type": "virtual_machine",
-        "severity": "HIGH",
-        "description": "Resource vm2 violates rule VM Disk Encryption Check",
-        "recommendation": "Enable disk encryption for virtual machines"
-      },
-      {
-        "rule_id": "VM_SEC_002",
-        "resource_name": "vm1",
-        "resource_type": "virtual_machine",
-        "severity": "HIGH",
-        "description": "Resource vm1 violates rule VM Disk Encryption Check",
-        "recommendation": "Enable disk encryption for virtual machines"
-      },
-      {
-        "rule_id": "STG_SEC_001",
-        "resource_name": "storage2",
-        "resource_type": "storage_account",
-        "severity": "HIGH",
-        "description": "Resource storage2 violates rule Storage Account HTTPS Only SAS Check",
-        "recommendation": "Configure SAS tokens to use HTTPS only to prevent unauthorized access"
-      },
-      {
-        "rule_id": "STG_SEC_005",
-        "resource_name": "storage2",
-        "resource_type": "storage_account",
-        "severity": "HIGH",
-        "description": "Resource storage2 violates rule Storage Account Network Rules Check",
-        "recommendation": "Set default network access rules to Deny and explicitly allow required networks"
-      },
-      {
-        "rule_id": "STG_SEC_007",
-        "resource_name": "storage2",
-        "resource_type": "storage_account",
-        "severity": "HIGH",
-        "description": "Resource storage2 violates rule Storage Account Microsoft Managed Keys Encryption Check",
-        "recommendation": "Enable encryption with Microsoft Managed Keys (MMK) for data at rest"
-      },
-      {
-        "rule_id": "STG_SEC_002",
-        "resource_name": "storage2",
-        "resource_type": "storage_account",
-        "severity": "HIGH",
-        "description": "Resource storage2 violates rule Storage Account SAS Token Expiry Check",
-        "recommendation": "Configure SAS tokens to expire within one hour to minimize security risks"
-      },
-      {
-        "rule_id": "STG_SEC_006",
-        "resource_name": "storage2",
-        "resource_type": "storage_account",
-        "severity": "HIGH",
-        "description": "Resource storage2 violates rule Storage Account Private Endpoints Check",
-        "recommendation": "Configure private endpoints for secure access to storage account"
-      },
-      {
-        "rule_id": "VM_SEC_002",
-        "resource_name": "vm1",
-        "resource_type": "virtual_machine",
-        "severity": "HIGH",
-        "description": "Resource vm1 violates rule VM Disk Encryption Check",
-        "recommendation": "Enable disk encryption for virtual machines"
-      },
-      {
-        "rule_id": "SQL_DB_001",
-        "resource_name": "db1",
-        "resource_type": "database",
-        "severity": "HIGH",
-        "description": "Resource db1 violates rule SQL Server Auditing Enabled",
-        "recommendation": "Enable auditing on SQL Server to track database events and maintain audit logs"
-      },
-      {
-        "rule_id": "SQL_DB_002",
-        "resource_name": "db1",
-        "resource_type": "database",
-        "severity": "HIGH",
-        "description": "Resource db1 violates rule SQL Server Public Network Access Check",
-        "recommendation": "Restrict public network access to SQL Server and configure specific IP ranges or VNet rules"
-      },
-      {
-        "rule_id": "SQL_DB_001",
-        "resource_name": "db1",
-        "resource_type": "database",
-        "severity": "HIGH",
-        "description": "Resource db1 violates rule SQL Server Auditing Enabled",
-        "recommendation": "Enable auditing on SQL Server to track database events and maintain audit logs"
-      },
-      {
-        "rule_id": "SQL_DB_002",
-        "resource_name": "db1",
-        "resource_type": "database",
-        "severity": "HIGH",
-        "description": "Resource db1 violates rule SQL Server Public Network Access Check",
-        "recommendation": "Restrict public network access to SQL Server and configure specific IP ranges or VNet rules"
-      }
-    ],
-    "MEDIUM": [
-      {
-        "rule_id": "VM_SEC_003",
-        "resource_name": "vm1",
-        "resource_type": "virtual_machine",
-        "severity": "MEDIUM",
-        "description": "Resource vm1 violates rule VM Open Ports Check",
-        "recommendation": "Review and restrict open ports. Avoid using well-known ports unless necessary"
-      },
-      {
-        "rule_id": "VM_SEC_003",
-        "resource_name": "vm2",
-        "resource_type": "virtual_machine",
-        "severity": "MEDIUM",
-        "description": "Resource vm2 violates rule VM Open Ports Check",
-        "recommendation": "Review and restrict open ports. Avoid using well-known ports unless necessary"
-      },
-      {
-        "rule_id": "VM_SEC_003",
-        "resource_name": "vm1",
-        "resource_type": "virtual_machine",
-        "severity": "MEDIUM",
-        "description": "Resource vm1 violates rule VM Open Ports Check",
-        "recommendation": "Review and restrict open ports. Avoid using well-known ports unless necessary"
-      },
-      {
-        "rule_id": "VM_SEC_003",
-        "resource_name": "vm2",
-        "resource_type": "virtual_machine",
-        "severity": "MEDIUM",
-        "description": "Resource vm2 violates rule VM Open Ports Check",
-        "recommendation": "Review and restrict open ports. Avoid using well-known ports unless necessary"
-      },
-      {
-        "rule_id": "STG_SEC_003",
-        "resource_name": "storage2",
-        "resource_type": "storage_account",
-        "severity": "MEDIUM",
-        "description": "Resource storage2 violates rule Storage Account Stored Access Policy Check",
-        "recommendation": "Use stored access policies (SAP) for SAS tokens to enable centralized management"
-      }
-    ],
-    "LOW": []
-  },
-  "findings_by_resource": {
-    "virtual_machine": [
-      {
-        "rule_id": "VM_SEC_003",
-        "resource_name": "vm1",
-        "resource_type": "virtual_machine",
-        "severity": "MEDIUM",
-        "description": "Resource vm1 violates rule VM Open Ports Check",
-        "recommendation": "Review and restrict open ports. Avoid using well-known ports unless necessary"
-      },
-      {
-        "rule_id": "VM_SEC_002",
-        "resource_name": "vm1",
-        "resource_type": "virtual_machine",
-        "severity": "HIGH",
-        "description": "Resource vm1 violates rule VM Disk Encryption Check",
-        "recommendation": "Enable disk encryption for virtual machines"
-      },
-      {
-        "rule_id": "VM_SEC_003",
-        "resource_name": "vm2",
-        "resource_type": "virtual_machine",
-        "severity": "MEDIUM",
-        "description": "Resource vm2 violates rule VM Open Ports Check",
-        "recommendation": "Review and restrict open ports. Avoid using well-known ports unless necessary"
-      },
-      {
-        "rule_id": "VM_SEC_002",
-        "resource_name": "vm2",
-        "resource_type": "virtual_machine",
-        "severity": "HIGH",
-        "description": "Resource vm2 violates rule VM Disk Encryption Check",
-        "recommendation": "Enable disk encryption for virtual machines"
-      },
-      {
-        "rule_id": "VM_SEC_003",
-        "resource_name": "vm1",
-        "resource_type": "virtual_machine",
-        "severity": "MEDIUM",
-        "description": "Resource vm1 violates rule VM Open Ports Check",
-        "recommendation": "Review and restrict open ports. Avoid using well-known ports unless necessary"
-      },
-      {
-        "rule_id": "VM_SEC_002",
-        "resource_name": "vm1",
-        "resource_type": "virtual_machine",
-        "severity": "HIGH",
-        "description": "Resource vm1 violates rule VM Disk Encryption Check",
-        "recommendation": "Enable disk encryption for virtual machines"
-      },
-      {
-        "rule_id": "VM_SEC_003",
-        "resource_name": "vm2",
-        "resource_type": "virtual_machine",
-        "severity": "MEDIUM",
-        "description": "Resource vm2 violates rule VM Open Ports Check",
-        "recommendation": "Review and restrict open ports. Avoid using well-known ports unless necessary"
-      },
-      {
-        "rule_id": "VM_SEC_002",
-        "resource_name": "vm1",
-        "resource_type": "virtual_machine",
-        "severity": "HIGH",
-        "description": "Resource vm1 violates rule VM Disk Encryption Check",
-        "recommendation": "Enable disk encryption for virtual machines"
-      }
-    ],
-    "database": [
-      {
-        "rule_id": "SQL_DB_001",
-        "resource_name": "db1",
-        "resource_type": "database",
-        "severity": "HIGH",
-        "description": "Resource db1 violates rule SQL Server Auditing Enabled",
-        "recommendation": "Enable auditing on SQL Server to track database events and maintain audit logs"
-      },
-      {
-        "rule_id": "SQL_DB_002",
-        "resource_name": "db1",
-        "resource_type": "database",
-        "severity": "HIGH",
-        "description": "Resource db1 violates rule SQL Server Public Network Access Check",
-        "recommendation": "Restrict public network access to SQL Server and configure specific IP ranges or VNet rules"
-      },
-      {
-        "rule_id": "SQL_DB_001",
-        "resource_name": "db1",
-        "resource_type": "database",
-        "severity": "HIGH",
-        "description": "Resource db1 violates rule SQL Server Auditing Enabled",
-        "recommendation": "Enable auditing on SQL Server to track database events and maintain audit logs"
-      },
-      {
-        "rule_id": "SQL_DB_002",
-        "resource_name": "db1",
-        "resource_type": "database",
-        "severity": "HIGH",
-        "description": "Resource db1 violates rule SQL Server Public Network Access Check",
-        "recommendation": "Restrict public network access to SQL Server and configure specific IP ranges or VNet rules"
-      },
-      {
-        "rule_id": "SQL_DB_001",
-        "resource_name": "db1",
-        "resource_type": "database",
-        "severity": "HIGH",
-        "description": "Resource db1 violates rule SQL Server Auditing Enabled",
-        "recommendation": "Enable auditing on SQL Server to track database events and maintain audit logs"
-      },
-      {
-        "rule_id": "SQL_DB_002",
-        "resource_name": "db1",
-        "resource_type": "database",
-        "severity": "HIGH",
-        "description": "Resource db1 violates rule SQL Server Public Network Access Check",
-        "recommendation": "Restrict public network access to SQL Server and configure specific IP ranges or VNet rules"
-      }
-    ],
-    "storage_account": [
-      {
-        "rule_id": "STG_SEC_001",
-        "resource_name": "storage2",
-        "resource_type": "storage_account",
-        "severity": "HIGH",
-        "description": "Resource storage2 violates rule Storage Account HTTPS Only SAS Check",
-        "recommendation": "Configure SAS tokens to use HTTPS only to prevent unauthorized access"
-      },
-      {
-        "rule_id": "STG_SEC_003",
-        "resource_name": "storage2",
-        "resource_type": "storage_account",
-        "severity": "MEDIUM",
-        "description": "Resource storage2 violates rule Storage Account Stored Access Policy Check",
-        "recommendation": "Use stored access policies (SAP) for SAS tokens to enable centralized management"
-      },
-      {
-        "rule_id": "STG_SEC_005",
-        "resource_name": "storage2",
-        "resource_type": "storage_account",
-        "severity": "HIGH",
-        "description": "Resource storage2 violates rule Storage Account Network Rules Check",
-        "recommendation": "Set default network access rules to Deny and explicitly allow required networks"
-      },
-      {
-        "rule_id": "STG_SEC_007",
-        "resource_name": "storage2",
-        "resource_type": "storage_account",
-        "severity": "HIGH",
-        "description": "Resource storage2 violates rule Storage Account Microsoft Managed Keys Encryption Check",
-        "recommendation": "Enable encryption with Microsoft Managed Keys (MMK) for data at rest"
-      },
-      {
-        "rule_id": "STG_SEC_002",
-        "resource_name": "storage2",
-        "resource_type": "storage_account",
-        "severity": "HIGH",
-        "description": "Resource storage2 violates rule Storage Account SAS Token Expiry Check",
-        "recommendation": "Configure SAS tokens to expire within one hour to minimize security risks"
-      },
-      {
-        "rule_id": "STG_SEC_006",
-        "resource_name": "storage2",
-        "resource_type": "storage_account",
-        "severity": "HIGH",
-        "description": "Resource storage2 violates rule Storage Account Private Endpoints Check",
-        "recommendation": "Configure private endpoints for secure access to storage account"
-      }
-    ]
-  },
-  "detailed_findings": [
-    {
-      "rule_id": "VM_SEC_003",
-      "resource_name": "vm1",
-      "resource_type": "virtual_machine",
-      "severity": "MEDIUM",
-      "description": "Resource vm1 violates rule VM Open Ports Check",
-      "recommendation": "Review and restrict open ports. Avoid using well-known ports unless necessary"
-    },
-    {
-      "rule_id": "VM_SEC_002",
-      "resource_name": "vm1",
-      "resource_type": "virtual_machine",
-      "severity": "HIGH",
-      "description": "Resource vm1 violates rule VM Disk Encryption Check",
-      "recommendation": "Enable disk encryption for virtual machines"
-    },
-    {
-      "rule_id": "SQL_DB_001",
-      "resource_name": "db1",
-      "resource_type": "database",
-      "severity": "HIGH",
-      "description": "Resource db1 violates rule SQL Server Auditing Enabled",
-      "recommendation": "Enable auditing on SQL Server to track database events and maintain audit logs"
-    },
-    {
-      "rule_id": "SQL_DB_002",
-      "resource_name": "db1",
-      "resource_type": "database",
-      "severity": "HIGH",
-      "description": "Resource db1 violates rule SQL Server Public Network Access Check",
-      "recommendation": "Restrict public network access to SQL Server and configure specific IP ranges or VNet rules"
-    },
-    {
-      "rule_id": "VM_SEC_003",
-      "resource_name": "vm2",
-      "resource_type": "virtual_machine",
-      "severity": "MEDIUM",
-      "description": "Resource vm2 violates rule VM Open Ports Check",
-      "recommendation": "Review and restrict open ports. Avoid using well-known ports unless necessary"
-    },
-    {
-      "rule_id": "VM_SEC_002",
-      "resource_name": "vm2",
-      "resource_type": "virtual_machine",
-      "severity": "HIGH",
-      "description": "Resource vm2 violates rule VM Disk Encryption Check",
-      "recommendation": "Enable disk encryption for virtual machines"
-    },
-    {
-      "rule_id": "VM_SEC_003",
-      "resource_name": "vm1",
-      "resource_type": "virtual_machine",
-      "severity": "MEDIUM",
-      "description": "Resource vm1 violates rule VM Open Ports Check",
-      "recommendation": "Review and restrict open ports. Avoid using well-known ports unless necessary"
-    },
-    {
-      "rule_id": "VM_SEC_002",
-      "resource_name": "vm1",
-      "resource_type": "virtual_machine",
-      "severity": "HIGH",
-      "description": "Resource vm1 violates rule VM Disk Encryption Check",
-      "recommendation": "Enable disk encryption for virtual machines"
-    },
-    {
-      "rule_id": "VM_SEC_003",
-      "resource_name": "vm2",
-      "resource_type": "virtual_machine",
-      "severity": "MEDIUM",
-      "description": "Resource vm2 violates rule VM Open Ports Check",
-      "recommendation": "Review and restrict open ports. Avoid using well-known ports unless necessary"
-    },
-    {
-      "rule_id": "STG_SEC_001",
-      "resource_name": "storage2",
-      "resource_type": "storage_account",
-      "severity": "HIGH",
-      "description": "Resource storage2 violates rule Storage Account HTTPS Only SAS Check",
-      "recommendation": "Configure SAS tokens to use HTTPS only to prevent unauthorized access"
-    },
-    {
-      "rule_id": "STG_SEC_003",
-      "resource_name": "storage2",
-      "resource_type": "storage_account",
-      "severity": "MEDIUM",
-      "description": "Resource storage2 violates rule Storage Account Stored Access Policy Check",
-      "recommendation": "Use stored access policies (SAP) for SAS tokens to enable centralized management"
-    },
-    {
-      "rule_id": "STG_SEC_005",
-      "resource_name": "storage2",
-      "resource_type": "storage_account",
-      "severity": "HIGH",
-      "description": "Resource storage2 violates rule Storage Account Network Rules Check",
-      "recommendation": "Set default network access rules to Deny and explicitly allow required networks"
-    },
-    {
-      "rule_id": "STG_SEC_007",
-      "resource_name": "storage2",
-      "resource_type": "storage_account",
-      "severity": "HIGH",
-      "description": "Resource storage2 violates rule Storage Account Microsoft Managed Keys Encryption Check",
-      "recommendation": "Enable encryption with Microsoft Managed Keys (MMK) for data at rest"
-    },
-    {
-      "rule_id": "STG_SEC_002",
-      "resource_name": "storage2",
-      "resource_type": "storage_account",
-      "severity": "HIGH",
-      "description": "Resource storage2 violates rule Storage Account SAS Token Expiry Check",
-      "recommendation": "Configure SAS tokens to expire within one hour to minimize security risks"
-    },
-    {
-      "rule_id": "STG_SEC_006",
-      "resource_name": "storage2",
-      "resource_type": "storage_account",
-      "severity": "HIGH",
-      "description": "Resource storage2 violates rule Storage Account Private Endpoints Check",
-      "recommendation": "Configure private endpoints for secure access to storage account"
-    },
-    {
-      "rule_id": "VM_SEC_002",
-      "resource_name": "vm1",
-      "resource_type": "virtual_machine",
-      "severity": "HIGH",
-      "description": "Resource vm1 violates rule VM Disk Encryption Check",
-      "recommendation": "Enable disk encryption for virtual machines"
-    },
-    {
-      "rule_id": "SQL_DB_001",
-      "resource_name": "db1",
-      "resource_type": "database",
-      "severity": "HIGH",
-      "description": "Resource db1 violates rule SQL Server Auditing Enabled",
-      "recommendation": "Enable auditing on SQL Server to track database events and maintain audit logs"
-    },
-    {
-      "rule_id": "SQL_DB_002",
-      "resource_name": "db1",
-      "resource_type": "database",
-      "severity": "HIGH",
-      "description": "Resource db1 violates rule SQL Server Public Network Access Check",
-      "recommendation": "Restrict public network access to SQL Server and configure specific IP ranges or VNet rules"
-    },
-    {
-      "rule_id": "SQL_DB_001",
-      "resource_name": "db1",
-      "resource_type": "database",
-      "severity": "HIGH",
-      "description": "Resource db1 violates rule SQL Server Auditing Enabled",
-      "recommendation": "Enable auditing on SQL Server to track database events and maintain audit logs"
-    },
-    {
-      "rule_id": "SQL_DB_002",
-      "resource_name": "db1",
-      "resource_type": "database",
-      "severity": "HIGH",
-      "description": "Resource db1 violates rule SQL Server Public Network Access Check",
-      "recommendation": "Restrict public network access to SQL Server and configure specific IP ranges or VNet rules"
+  "rule_based_findings": {
+    "total": 20,
+    "findings": {
+      "HIGH": [
+        {
+          "rule_id": "VM_SEC_002",
+          "resource_name": "vm1",
+          "resource_type": "virtual_machine",
+          "severity": "HIGH",
+          "description": "Resource vm1 violates rule VM Disk Encryption Check",
+          "recommendation": "Enable disk encryption for virtual machines"
+        },
+        {
+          "rule_id": "SQL_DB_002",
+          "resource_name": "db1",
+          "resource_type": "database",
+          "severity": "HIGH",
+          "description": "Resource db1 violates rule SQL Server Public Network Access Check",
+          "recommendation": "Restrict public network access to SQL Server and configure specific IP ranges or VNet rules"
+        },
+        {
+          "rule_id": "SQL_DB_001",
+          "resource_name": "db1",
+          "resource_type": "database",
+          "severity": "HIGH",
+          "description": "Resource db1 violates rule SQL Server Auditing Enabled",
+          "recommendation": "Enable auditing on SQL Server to track database events and maintain audit logs"
+        },
+        {
+          "rule_id": "VM_SEC_002",
+          "resource_name": "vm2",
+          "resource_type": "virtual_machine",
+          "severity": "HIGH",
+          "description": "Resource vm2 violates rule VM Disk Encryption Check",
+          "recommendation": "Enable disk encryption for virtual machines"
+        },
+        {
+          "rule_id": "VM_SEC_002",
+          "resource_name": "vm1",
+          "resource_type": "virtual_machine",
+          "severity": "HIGH",
+          "description": "Resource vm1 violates rule VM Disk Encryption Check",
+          "recommendation": "Enable disk encryption for virtual machines"
+        },
+        {
+          "rule_id": "STG_SEC_002",
+          "resource_name": "storage2",
+          "resource_type": "storage_account",
+          "severity": "HIGH",
+          "description": "Resource storage2 violates rule Storage Account SAS Token Expiry Check",
+          "recommendation": "Configure SAS tokens to expire within one hour to minimize security risks"
+        },
+        {
+          "rule_id": "STG_SEC_005",
+          "resource_name": "storage2",
+          "resource_type": "storage_account",
+          "severity": "HIGH",
+          "description": "Resource storage2 violates rule Storage Account Network Rules Check",
+          "recommendation": "Set default network access rules to Deny and explicitly allow required networks"
+        },
+        {
+          "rule_id": "STG_SEC_006",
+          "resource_name": "storage2",
+          "resource_type": "storage_account",
+          "severity": "HIGH",
+          "description": "Resource storage2 violates rule Storage Account Private Endpoints Check",
+          "recommendation": "Configure private endpoints for secure access to storage account"
+        },
+        {
+          "rule_id": "STG_SEC_001",
+          "resource_name": "storage2",
+          "resource_type": "storage_account",
+          "severity": "HIGH",
+          "description": "Resource storage2 violates rule Storage Account HTTPS Only SAS Check",
+          "recommendation": "Configure SAS tokens to use HTTPS only to prevent unauthorized access"
+        },
+        {
+          "rule_id": "STG_SEC_007",
+          "resource_name": "storage2",
+          "resource_type": "storage_account",
+          "severity": "HIGH",
+          "description": "Resource storage2 violates rule Storage Account Microsoft Managed Keys Encryption Check",
+          "recommendation": "Enable encryption with Microsoft Managed Keys (MMK) for data at rest"
+        },
+        {
+          "rule_id": "VM_SEC_002",
+          "resource_name": "vm1",
+          "resource_type": "virtual_machine",
+          "severity": "HIGH",
+          "description": "Resource vm1 violates rule VM Disk Encryption Check",
+          "recommendation": "Enable disk encryption for virtual machines"
+        },
+        {
+          "rule_id": "SQL_DB_002",
+          "resource_name": "db1",
+          "resource_type": "database",
+          "severity": "HIGH",
+          "description": "Resource db1 violates rule SQL Server Public Network Access Check",
+          "recommendation": "Restrict public network access to SQL Server and configure specific IP ranges or VNet rules"
+        },
+        {
+          "rule_id": "SQL_DB_001",
+          "resource_name": "db1",
+          "resource_type": "database",
+          "severity": "HIGH",
+          "description": "Resource db1 violates rule SQL Server Auditing Enabled",
+          "recommendation": "Enable auditing on SQL Server to track database events and maintain audit logs"
+        },
+        {
+          "rule_id": "SQL_DB_002",
+          "resource_name": "db1",
+          "resource_type": "database",
+          "severity": "HIGH",
+          "description": "Resource db1 violates rule SQL Server Public Network Access Check",
+          "recommendation": "Restrict public network access to SQL Server and configure specific IP ranges or VNet rules"
+        },
+        {
+          "rule_id": "SQL_DB_001",
+          "resource_name": "db1",
+          "resource_type": "database",
+          "severity": "HIGH",
+          "description": "Resource db1 violates rule SQL Server Auditing Enabled",
+          "recommendation": "Enable auditing on SQL Server to track database events and maintain audit logs"
+        }
+      ],
+      "MEDIUM": [
+        {
+          "rule_id": "VM_SEC_003",
+          "resource_name": "vm1",
+          "resource_type": "virtual_machine",
+          "severity": "MEDIUM",
+          "description": "Resource vm1 violates rule VM Open Ports Check",
+          "recommendation": "Review and restrict open ports. Avoid using well-known ports unless necessary"
+        },
+        {
+          "rule_id": "VM_SEC_003",
+          "resource_name": "vm2",
+          "resource_type": "virtual_machine",
+          "severity": "MEDIUM",
+          "description": "Resource vm2 violates rule VM Open Ports Check",
+          "recommendation": "Review and restrict open ports. Avoid using well-known ports unless necessary"
+        },
+        {
+          "rule_id": "VM_SEC_003",
+          "resource_name": "vm1",
+          "resource_type": "virtual_machine",
+          "severity": "MEDIUM",
+          "description": "Resource vm1 violates rule VM Open Ports Check",
+          "recommendation": "Review and restrict open ports. Avoid using well-known ports unless necessary"
+        },
+        {
+          "rule_id": "VM_SEC_003",
+          "resource_name": "vm2",
+          "resource_type": "virtual_machine",
+          "severity": "MEDIUM",
+          "description": "Resource vm2 violates rule VM Open Ports Check",
+          "recommendation": "Review and restrict open ports. Avoid using well-known ports unless necessary"
+        },
+        {
+          "rule_id": "STG_SEC_003",
+          "resource_name": "storage2",
+          "resource_type": "storage_account",
+          "severity": "MEDIUM",
+          "description": "Resource storage2 violates rule Storage Account Stored Access Policy Check",
+          "recommendation": "Use stored access policies (SAP) for SAS tokens to enable centralized management"
+        }
+      ],
+      "LOW": []
     }
-  ]
+  },
+  "ai_based_findings": {
+    "total": 0,
+    "findings": {
+      "HIGH": [],
+      "MEDIUM": [],
+      "LOW": []
+    }
+  }
 }
