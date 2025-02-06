@@ -58,7 +58,7 @@ CloudSecConfigAnalysis/
       "type": "resource_type",
       "name": "resource_name",
       "azure_specific": {
-        // Resource-specific properties
+        # Resource-specific properties
       }
     }
   ]
