@@ -175,6 +175,7 @@ Accepts only json file
 1. **update the Architecture to use OPA**
 
 -  Update architecture that incorporates Open Policy Agent (OPA) for verifying cloud configurations and develop rules using rego
+-  OPA provides efficient storage architecture to store JSON data that can be accessed using declarative statements using rego
 
 2. **Additional Rules**
 
